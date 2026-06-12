@@ -33,13 +33,6 @@ if (process.env.NODE_ENV === 'production') {
   app.use(morgan('dev'));
 }
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-  message: { message: 'Too many requests, please try again later.' },
-});
-app.use('/api/', limiter);
-
 const authLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
   max: 10,
